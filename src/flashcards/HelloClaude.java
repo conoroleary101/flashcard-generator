@@ -37,13 +37,30 @@ public class HelloClaude {
         """;
 
     private static final String SAMPLE_NOTES = """
-        A primary key is a column or set of columns in a database table \
-        that uniquely identifies each row. It must be unique and cannot \
-        be null. A foreign key is a column that references the primary \
-        key of another table, creating a relationship between the two \
-        tables. Foreign keys enforce referential integrity, meaning a \
-        value in the foreign key column must exist in the referenced \
-        primary key column.
+        Correlation measures the strength and direction of a linear relationship
+        between two variables. The correlation coefficient, denoted r, ranges from
+        negative one to positive one. A value near positive one indicates a strong
+        positive relationship where both variables increase together. A value near
+        negative one indicates a strong negative relationship where one variable
+        increases as the other decreases. A value near zero indicates little to no
+        linear relationship. The coefficient of determination, R squared, represents
+        the proportion of variation in the dependent variable that can be explained
+        by the independent variable.
+
+        A common mistake is confusing correlation with causation. Correlation does
+        not imply causation. Two variables may move together without one causing
+        the other. This can happen due to coincidence, reverse causation where
+        the effect actually causes the supposed cause, or due to a lurking variable.
+        A lurking variable is a third variable that influences both of the observed
+        variables, creating an apparent relationship where none directly exists.
+        A confounding variable is similar but specifically obscures the true
+        relationship between the variables being studied.
+
+        Scatter plots are the primary visual tool for examining relationships.
+        A scatter plot displays paired data points on two axes. The overall
+        pattern reveals the direction, form, and strength of the relationship.
+        Outliers, unusual points far from the main cluster, can heavily influence
+        the calculated correlation coefficient and should always be investigated.
         """;
 
     public static void main(String[] args) throws Exception {
