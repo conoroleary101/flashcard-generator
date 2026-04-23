@@ -5,6 +5,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+
 public class HelloClaude {
 
     private static final String FLASHCARD_PROMPT = """
@@ -83,10 +87,37 @@ public class HelloClaude {
         HttpClient client = HttpClient.newHttpClient();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        //Step 7: Print what we got back
-        System.out.println("Status Code: " + response.statusCode());
-        System.out.println("Response body");
-        System.out.println(response.body());
+        // Step 7: Check for HTTP errors
+        if (response.statusCode() != 200) {
+            System.err.println("API call failed with status " + response.statusCode());
+            System.err.println(response.body());
+            return;
+        }
+
+        // Step 8: Parse the outer API response to extract Claude's text
+        Gson gson = new Gson();
+        JsonObject apiResponse = gson.fromJson(response.body(), JsonObject.class);
+        JsonArray content = apiResponse.getAsJsonArray("content");
+        String claudeText = content.get(0).getAsJsonObject().get("text").getAsString();
+
+        // Step 9: Clean up markdown code fences if present
+        String cleaned = claudeText
+                .replace("```json", "")
+                .replace("```", "")
+                .trim();
+
+        // Step 10: Parse the inner JSON into our FlashcardResponse object
+        FlashcardResponse flashcardResponse = gson.fromJson(cleaned, FlashcardResponse.class);
+
+        // Step 11: Print the flashcards cleanly
+        System.out.println("=== Generated Flashcards ===\n");
+        int i = 1;
+        for (Flashcard card : flashcardResponse.getFlashcards()) {
+            System.out.println("--- Flashcard " + i + " ---");
+            System.out.println(card);
+            System.out.println();
+            i++;
+        }
 
     }
 
