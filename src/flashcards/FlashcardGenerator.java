@@ -45,9 +45,16 @@ public class FlashcardGenerator {
             Path savedTo = writer.writeToFile(flashcards);
             System.out.println("Saved to: " + savedTo.toAbsolutePath());
 
+        } catch (java.io.IOException e) {
+            System.err.println("File error: " + e.getMessage());
+            System.exit(2);
+        } catch (FlashcardException e) {
+            System.err.println("Flashcard generation failed: " + e.getMessage());
+            System.exit(3);
         } catch (Exception e) {
-            System.err.println("ERROR: " + e.getMessage());
-            System.exit(1);
+            System.err.println("Unexpected error: " + e.getMessage());
+            e.printStackTrace();
+            System.exit(99);
         }
     }
 

@@ -10,25 +10,30 @@ public class FlashcardParser {
 
     private final Gson gson = new Gson();
 
-    public List<Flashcard> parse(String apiResponse){
-        if(apiResponse == null || apiResponse.isBlank()){
-            throw new IllegalArgumentException("API response cannot be null or empty");
+    public List<Flashcard> parse(String apiResponse) throws FlashcardException {
+        if (apiResponse == null || apiResponse.isBlank()) {
+            throw new FlashcardException("API response cannot be null or empty");
         }
 
-        //Step 1: Extract the text Claude generated from the outer API response
-        String claudeText = extractClaudeText(apiResponse);
+        try {
+            // Step 1: Extract the text Claude generated from the outer API response
+            String claudeText = extractClaudeText(apiResponse);
 
-        //Step 2: Clean up any markdown code fences
-        String cleaned = cleanMarkdownFences(claudeText);
+            // Step 2: Clean up any markdown code fences
+            String cleaned = cleanMarkdownFences(claudeText);
 
-        //Step 3: Parse the inner JSON into out FlashCardResponse object
-        FlashcardResponse response = gson.fromJson(cleaned, FlashcardResponse.class);
+            // Step 3: Parse the inner JSON into our FlashcardResponse object
+            FlashcardResponse response = gson.fromJson(cleaned, FlashcardResponse.class);
 
-        if(response == null || response.getFlashcards() == null){
-            throw new RuntimeException("Failed to parse flashcards from response: " + cleaned);
+            if (response == null || response.getFlashcards() == null) {
+                throw new FlashcardException("Failed to parse flashcards from response: " + cleaned);
+            }
+
+            return response.getFlashcards();
+
+        } catch (com.google.gson.JsonSyntaxException e) {
+            throw new FlashcardException("Invalid JSON in Claude response: " + e.getMessage(), e);
         }
-
-        return response.getFlashcards();
     }
 
     private String extractClaudeText(String apiResponse){

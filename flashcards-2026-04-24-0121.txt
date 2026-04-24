@@ -1,0 +1,23 @@
+=== Generated Flashcards ===
+Created: 2026-04-24T01:21:19.848250200
+
+--- Flashcard 1 ---
+Q: How does encapsulation improve code maintainability in object-oriented programming?
+A: Encapsulation hides internal state and implementation details from outside code, allowing internal changes to be made without affecting code that uses the class.
+
+--- Flashcard 2 ---
+Q: What is the relationship between classes and objects in OOP?
+A: Classes serve as blueprints or templates that define the structure and behavior, while objects are specific instances created from those classes.
+
+--- Flashcard 3 ---
+Q: Why does inheritance promote code reuse in object-oriented systems?
+A: Inheritance allows child classes to automatically acquire properties and methods from parent classes, avoiding the need to rewrite common functionality.
+
+--- Flashcard 4 ---
+Q: How does polymorphism enable flexible code design?
+A: Polymorphism allows different classes to be treated through a common interface, enabling code to work with various object types without knowing their specific classes.
+
+--- Flashcard 5 ---
+Q: What are the two essential components that objects combine in OOP?
+A: Objects combine data (state or attributes) and behavior (methods or functions that operate on that data).
+
