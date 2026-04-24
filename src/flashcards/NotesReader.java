@@ -14,11 +14,11 @@ public class NotesReader {
         Path path = Path.of(filePath);
 
         if(!Files.exists(path)){
-            throw new IOException("Notes files not found " + filePath);
+            throw new IOException("Notes file not found " + filePath);
         }
 
         if(!Files.isRegularFile(path)){
-            throw new IOException("Path is not a file " + filePath);
+            throw new IOException("Path is not a file: " + filePath);
         }
 
         String content = Files.readString(path);
