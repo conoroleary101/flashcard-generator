@@ -29,6 +29,7 @@ public class ClaudeClient {
         String escaped = userPrompt
                 .replace("\\", "\\\\")
                 .replace("\"", "\\\"")
+                .replace("\r", "\\r")
                 .replace("\n", "\\n");
 
         //Build the JSON request body

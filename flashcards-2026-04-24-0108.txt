@@ -1,0 +1,23 @@
+=== Generated Flashcards ===
+Created: 2026-04-24T01:08:02.764128800
+
+--- Flashcard 1 ---
+Q: How does encapsulation contribute to better software design in object-oriented programming?
+A: Encapsulation bundles data with methods that operate on it while hiding internal state, which protects data integrity and reduces dependencies between different parts of code.
+
+--- Flashcard 2 ---
+Q: What is the relationship between classes and objects in OOP?
+A: Classes serve as blueprints or templates that define the structure and behavior, while objects are specific instances created from those classes.
+
+--- Flashcard 3 ---
+Q: Why is inheritance considered a code reuse mechanism?
+A: Inheritance allows a class to acquire properties and methods from a parent class, eliminating the need to rewrite common functionality for related classes.
+
+--- Flashcard 4 ---
+Q: How does polymorphism differ from inheritance in object-oriented programming?
+A: While inheritance focuses on code reuse through parent-child relationships, polymorphism enables different classes to be treated through a common interface, allowing for flexible and interchangeable object usage.
+
+--- Flashcard 5 ---
+Q: What are the two essential components that objects contain in OOP?
+A: Objects contain both data (attributes or properties) and behavior (methods or functions that operate on that data).
+

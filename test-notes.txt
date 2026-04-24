@@ -1,0 +1,7 @@
+Object-oriented programming is based on the concept of objects, which
+contain both data and behavior. Classes serve as blueprints for creating
+objects. Encapsulation refers to bundling data with the methods that
+operate on that data, while hiding internal state from outside code.
+Inheritance allows a class to inherit properties and methods from a
+parent class, promoting code reuse. Polymorphism allows objects of
+different classes to be treated through a common interface.
